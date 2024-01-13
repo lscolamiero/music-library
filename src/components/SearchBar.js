@@ -1,11 +1,17 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-function SearchBar({ handleSubmit }) {
-    const [searchTerm, setSearchTerm] = useState('')
+function SearchBar(props) {
+    let [searchTerm, setSearchTerm] = useState('')
+
     return (
-        <form onSubmit={(e) => handleSubmit(e, searchTerm)}>
-            <input onChange={(e) => setSearchTerm(e.target.value)} placeholder="Enter band name here" />
+        <form onSubmit={(e) => props.handleSearch(e, searchTerm)}>
+
+            <input type="text" placeholder="Enter a search term here" onChange={
+                (e) => setSearchTerm(e.target.value)
+            } />
+
             <input type="submit" />
+
         </form>
     )
 }
